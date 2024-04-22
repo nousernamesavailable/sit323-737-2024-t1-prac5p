@@ -1,0 +1,27 @@
+version: "0.0.1"
+services:
+  app:
+    build: .
+    image: mox_myapp
+    ports: 
+      - "3041:3040"
+    environment: 
+      - PORT=3040
+    container_name: mox_myapp_container1
+    networks: 
+      - my-network
+
+  app2:
+    build: . 
+    image: mox_myapp
+    ports: 
+      - "3042:3040"
+    environment: 
+      - PORT=3040
+    container_name: mox_myapp_container2
+    networks: 
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
